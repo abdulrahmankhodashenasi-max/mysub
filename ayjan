@@ -1,0 +1,101 @@
+{
+  "log": {
+    "access": "",
+    "error": "",
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "0.0.0.0",
+      "protocol": "socks",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    },
+    {
+      "tag": "http",
+      "port": 10809,
+      "listen": "0.0.0.0",
+      "protocol": "http",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "trojan",
+      "settings": {
+        "servers": [
+          {
+            "address": "::ffff:c000:362e",
+            "port": 2096,
+            "password": "UrghtEIbZ60p1UNTW3Vv9A",
+            "email": "https://gozargah.github.io/marzban/"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "tls",
+        "tlsSettings": {
+          "serverName": "nl1.rahnamabist.ir",
+          "allowInsecure": false,
+          "fingerprint": "chrome",
+          "alpn": [
+            "h2",
+            "http/1.1"
+          ],
+          "show": false
+        },
+        "xhttpSettings": {
+          "headers": {
+            "Pragma": "no-cache"
+          },
+          "mode": "auto",
+          "path": "/drping",
+          "host": "nl1.rahnamabist.ir",
+          "scMaxEachPostBytes": 1000000,
+          "scMaxConcurrentPosts": 100,
+          "scMinPostsIntervalMs": 30,
+          "xPaddingBytes": "100-1000",
+          "noGRPCHeader": false
+        }
+      }
+    }
+  ],
+  "dns": {
+    "servers": [
+      "1.1.1.1",
+      "8.8.8.8"
+    ]
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": []
+  },
+  "remarks": "ByPass Dpi [ XTLs ]  🇳🇱 "
+}
